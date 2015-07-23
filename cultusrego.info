@@ -1,0 +1,7 @@
+name = cultusrego
+description = Drupal styleguide module based on the identically named PHP styleguide generator
+package = Styleguide
+core = 7.x
+dependencies[] = composer_manager
+
+configure = admin/config/cultusrego

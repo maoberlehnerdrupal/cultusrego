@@ -1,0 +1,12 @@
+{
+  "name": "cultusrego",
+  "version": "1.0.0",
+  "authors": [
+    "Markus Oberlehner <markus.oberlehner@gmail.com>"
+  ],
+  "license": "GPL v2",
+  "dependencies": {
+    "cultusrego_theme_default": "dev",
+    "normalize.css": "~3.0.3"
+  }
+}
