@@ -9,7 +9,7 @@ function cultusrego_menu() {
     'page arguments' => array('cultusrego_admin'),
     'access arguments' => array('administer cultusrego settings'),
    );
-  $items[variable_get('cultusrego_path', 'styleguide')] = array(
+  $items['styleguide'] = array(
     'title' => 'Styleguide',
     'description' => 'cultusrego styleguide.',
     'page callback' => 'cultusrego_view_styleguide',
@@ -40,22 +40,17 @@ function cultusrego_admin() {
     '#default_value' => variable_get('cultusrego_source'),
     '#description' => t('The CSS files that should be scanned for styleguide comment blocks. (One per line)'),
   );
-  $form['cultusrego_path'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Path'),
-    '#default_value' => variable_get('cultusrego_path', 'styleguide'),
-    '#description' => t('The path where you can view the styleguide.'),
-  );
 
   return system_settings_form($form);
 }
 
 function cultusrego_view_styleguide() {
   $styleguide = new cultusrego(array(
-    'source' => 'sites/all/themes/test/css/style.css',
+    'source' => explode("\r\n", variable_get('cultusrego_source')),
     'title' => variable_get('site_name'),
     'description' => variable_get('site_slogan'),
-    'base_path' => drupal_get_path('module', 'cultusrego') . '/theme/',
+    'base_path' => base_path(),
+    'asset_path' => base_path() . drupal_get_path('module', 'cultusrego') . '/theme/',
     'template_folder' => __DIR__ . '/theme/vendor/cultusrego_theme_default/template',
     'twig_cache' => FALSE,
   ));
